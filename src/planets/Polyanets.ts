@@ -1,8 +1,11 @@
 import Planet from "./Planet.js";
 
 class Polyanets extends Planet {
-  constructor(baseUrl: string) {
-    super(baseUrl);
+  apiRoute: string;
+
+  constructor() {
+    super();
+    this.apiRoute = "/polyanets";
   }
 }
 

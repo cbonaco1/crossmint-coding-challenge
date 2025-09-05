@@ -4,11 +4,15 @@ type Colors = "blue" | "red" | "purple" | "white";
 
 class Soloons extends Planet {
   color: Colors;
+  apiRoute: string;
 
-  constructor(baseUrl: string, color: Colors) {
-    super(baseUrl);
+  constructor(color: Colors) {
+    super();
+    this.apiRoute = "/soloons";
     this.color = color;
   }
+
+  // override draw() method to include color
 }
 
 export default Soloons;
