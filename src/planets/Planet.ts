@@ -8,7 +8,7 @@ export default class Planet {
 
   draw(): void {
     // make POST call to this.baseUrl
-    console.log("something")
+    console.log("drawing something")
   }
   
   erase(): void {

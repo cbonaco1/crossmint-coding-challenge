@@ -1,4 +1,4 @@
-import Planet from "./Planet";
+import Planet from "./Planet.js";
 
 type Directions = 'up' | 'down' | 'left' | 'right';
 

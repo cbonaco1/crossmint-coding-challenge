@@ -1,4 +1,4 @@
-import Planet from "./Planet";
+import Planet from "./Planet.js";
 
 type Colors = "blue" | "red" | "purple" | "white";
 

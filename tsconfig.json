@@ -9,6 +9,9 @@
     // See also https://aka.ms/tsconfig/module
     "module": "esnext",
     "target": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "types": [],
     // For nodejs:
     // "lib": ["esnext"],

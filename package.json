@@ -1,7 +1,8 @@
 {
   "name": "crossmint-coding-challenge",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/partTwo.js",
+  "type": "module",
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch"
