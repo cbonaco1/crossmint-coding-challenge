@@ -1,16 +1,6 @@
-export default class Planet {
-  baseUrl: string;
+import Cometh from "./planets/Cometh";
 
-  constructor(baseUrl: string) {
-    this.baseUrl = baseUrl;
-  }
-
-  draw(): void {
-    // make POST call to this.baseUrl
-    console.log("something")
-  }
-  
-  erase(): void {
-    // make DELETE call to this.baseUrl
-  }
+function main() {
+  const com1 = new Cometh("/api", 'down');
+  com1.draw();
 }
