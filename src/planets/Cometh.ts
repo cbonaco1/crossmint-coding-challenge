@@ -1,3 +1,4 @@
+import axios from "axios";
 import Planet from "./Planet.js";
 
 export type Directions = 'up' | 'down' | 'left' | 'right';
@@ -12,7 +13,29 @@ class Cometh extends Planet {
     this.direction = direction;
   }
 
-  // override draw() method to include direction
+  /**
+   * Cometh' draw() method needs to also pass direction param
+   * 
+   * @param row 
+   * @param column 
+   * @returns Promise<{}>
+   */
+  async draw(row: number, column: number): Promise<{}> {
+    return new Promise((resolve, reject) => {
+      axios.post(this.api(), {
+        row,
+        column,
+        direction: this.direction.toLowerCase(),
+        candidateId: this.candidateId
+      })
+      .then(response => {
+        resolve(response.data);
+      })
+      .catch((error) => {
+        reject(error);
+      })
+    })
+  }
 }
 
 export default Cometh;

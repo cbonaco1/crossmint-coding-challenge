@@ -1,3 +1,5 @@
+import axios from "axios";
+
 // Parent class for other Planets
 export default abstract class Planet {
   baseUrl: string;
@@ -13,12 +15,33 @@ export default abstract class Planet {
     return `${this.baseUrl}${this.apiRoute}`;
   }
 
-  draw(): void {
-    // make POST call to this.baseUrl
-    console.log("drawing something")
+  /**
+   * Draw the planet, given the row and column.
+   * Base implementation only passes row, column, and candidateId params.
+   * Child classes may override this if they need different params or logic.
+   * 
+   * @param row 
+   * @param column 
+   * @returns Promise<{}>
+   */
+  async draw(row: number, column: number): Promise<{}> {
+    return new Promise((resolve, reject) => {
+      axios.post(this.api(), {
+        row,
+        column,
+        candidateId: this.candidateId
+      })
+      .then(response => {
+        resolve(response.data);
+      })
+      .catch((error) => {
+        reject(error);
+      })
+    })
   }
   
-  erase(): void {
+  erase(row: number, column: number): void {
     // make DELETE call to this.baseUrl
+    // i think delete is same for all
   }
 }

@@ -11,21 +11,20 @@ class PlantFactory {
     
     if (comethRegex.test(type)) {
       const direction = type.split("_")[0];
-      console.log(`Creating a ${direction} COMETH`)
       // TODO - validate direction
       planet = new Cometh(direction as Directions);
     } else if (soloonRegex.test(type)){
       const color = type.split("_")[0];
       // TODO - validate color
-      console.log(`Creating a ${color} SOLOON`)
       planet = new Soloon(color as Colors);
     } else if(type === "POLYANET") {
-      console.log(`Creating a POLYANET`)
       planet = new Polyanets();
     } else if(type === "SPACE") {
-      console.log("SPACE, do nothing")
+      // space, do nothing
     } else {
       console.log("INVALID TYPE ", type);
+      // throwing an error here seems not necessary,
+      // keep iterating through planets
     }
 
     return planet;
