@@ -5,23 +5,63 @@ import PlanetFactory from "./planets/PlanetFactory.js"; // NICE_TO_HAVE - remove
 import Planet from "./planets/Planet.js";
 
 async function main() {
-  const planets:Array<Planet> = [];
+  const planets:Array<{planet: Planet, row: number, column: number, type: string}> = [];
   try {
     const { data } = await getGoal();
     if (data.goal) {
       data.goal.forEach((rows:Array<string>, rowIndex: number) => {
         // check if row is an array
         rows.forEach((column:string, colIndex: number) => {
-          console.log("----")
-          console.log(`Row ${rowIndex} - Col ${colIndex} ---> ${column}`);
           const planet = PlanetFactory.createPlanet(column);
           if (planet) {
-            planets.push(planet);
+            planets.push({
+              planet,
+              row: rowIndex,
+              column: colIndex,
+              type: column
+            });
           }
         })
       });
     }
-    console.log(`Creating ${planets.length} planets`)
+
+    // making calls concurrently was returning 429 - too many requests
+    // if this wasn't the case, concurrent calls would look something like:
+    /**
+      const draws = planets.map(({ planet, row, column }) => planet.draw(row, column));
+      try {
+        await Promise.all(draws);
+        // OR Promise.allSettled(draws) to keep drawing even if some fail
+      } catch (error) {
+        // handle error
+      }
+    */
+    let i = 1;
+    const intervalId = setInterval(async () => {
+      if (i === planets.length) {
+        clearInterval(intervalId)
+      } else {
+        i++;
+        const plnt = planets[i-1]
+        if (plnt) {
+          const { planet, row, column, type } = plnt;
+          try {
+            console.log(`Drawing a ${type}`);
+            await planet.draw(row, column);
+            console.log("done");
+          } catch (error) {
+            console.log("Error drawing ", type);
+            if (axios.isAxiosError(error)) {
+              console.log("Status:", error.response?.status);
+              console.log("Data: ", error.response?.data);
+            } else {
+              console.log(error);
+            }
+          }
+        }
+      }
+    }, 2000)
+
   } catch (error) {
     console.log("Error fetching goal:")
     if (axios.isAxiosError(error)) {
