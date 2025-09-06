@@ -1,6 +1,6 @@
 import Planet from "./Planet.js";
 
-type Colors = "blue" | "red" | "purple" | "white";
+export type Colors = "blue" | "red" | "purple" | "white";
 
 class Soloons extends Planet {
   color: Colors;

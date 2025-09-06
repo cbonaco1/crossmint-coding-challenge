@@ -1,6 +1,6 @@
 import Planet from "./Planet.js";
 
-type Directions = 'up' | 'down' | 'left' | 'right';
+export type Directions = 'up' | 'down' | 'left' | 'right';
 
 class Cometh extends Planet {
   direction: Directions;
