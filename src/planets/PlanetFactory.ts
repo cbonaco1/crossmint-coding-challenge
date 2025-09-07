@@ -9,6 +9,9 @@ class PlantFactory {
     const soloonRegex = /^[A-Z]+_SOLOON$/;
     let planet:Planet | null = null;
     
+    // throwing an error in case of invalid direction, color, or Soloon plancement
+    // from this function seems not necessary.
+    // Log any errors and keep iterating through planets to create
     if (comethRegex.test(type)) {
       const direction = type.split("_")[0];
       // TODO - validate direction
@@ -23,8 +26,6 @@ class PlantFactory {
       // space, do nothing
     } else {
       console.log("INVALID TYPE ", type);
-      // throwing an error here seems not necessary,
-      // keep iterating through planets
     }
 
     return planet;
