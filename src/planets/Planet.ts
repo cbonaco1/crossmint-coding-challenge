@@ -25,6 +25,13 @@ export default abstract class Planet {
    * @returns Promise<{}>
    */
   async draw(row: number, column: number): Promise<{}> {
+    /**
+     * One possible enhancement here would be to pass params 
+     * to pass into the POST request (since lots of the code in Soloon and Cometh's draw() methods are the same).
+     * However, the tradeoff is you would lose the ability to call draw()
+     * in a Polymorphic fashion. Would need to know which subclass
+     * of Planet we're drawing and pass appropriate params (color, direction)
+     */
     return new Promise((resolve, reject) => {
       axios.post(this.api(), {
         row,

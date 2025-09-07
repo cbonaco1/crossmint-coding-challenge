@@ -2,6 +2,10 @@ const axios = require('axios');
 const API_DOMAIN = "https://challenge.crossmint.io/api";
 const CANDIDATE_ID= "74b00bbc-16c7-4fa5-83ba-b4e2c4d0e9a3";
 
+/**
+ * I would re-write this to leverage the TS classes I built in Part Two,
+ * however I'm unable to go back to my map and validate my solution
+ */
 async function partOne() {
   const offset = 2; // start from 2 rows/cols in
   const rowAndColLength = 11;
@@ -70,7 +74,10 @@ async function addPoly(row, column) {
     .then(() => {
       setTimeout(resolve, 2000);
     })
-    // TODO - handle error here - throw error
+    // NOTE - I would add error handling logic here,
+    // but I clicked "Validate solution" before adding this logic,
+    // so unfortunately I wouldn't be able to test any new code
+    // after validating.
   });  
 }
 
