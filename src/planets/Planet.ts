@@ -47,9 +47,28 @@ export default abstract class Planet {
     })
   }
   
-  erase(row: number, column: number): void {
-    // make DELETE call to this.baseUrl
-    // i think delete is same for all
+  /**
+   * Delete planet at row/column
+   * @param row 
+   * @param column 
+   * @returns Promise<{}>
+   */
+  erase(row: number, column: number): Promise<{}> {
+    return new Promise((resolve, reject) => {
+      axios.delete(this.api(), {
+        data: {
+          row,
+          column,
+          candidateId: this.candidateId
+        }
+      })
+      .then(response => {
+        resolve(response.data);
+      })
+      .catch((error) => {
+        reject(error);
+      })
+    })
   }
 
   /**
