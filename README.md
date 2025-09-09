@@ -31,6 +31,8 @@ node ./dist/partTwo.js
 
 ## Feedback
 Make it more obvious that clicking "Validate solution" basically submits your answer.
-Make testing the non-happy path (invalid placement of Soloons, invalid colors and directions, etc.) easier by providing edge cases or invalid values in the `/goal` endpoint
+
+Make testing the non-happy path (invalid placement of Soloons, invalid colors and directions, etc.) easier by providing edge cases or invalid values in the `/goal` endpoint.
+
 Allow the APIs to handle concurrent requests
 
