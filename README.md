@@ -4,7 +4,9 @@
 ## Solution
 The solution for Part Two leverages TypeScript and Object-Oriented Programming (OOP) principles to draw different types of planets. The `Planet` abstract class provides functionality and attributes common between all types of planets, and child classes `Soloons`, `Cometh`, and `Polyanet` each override any specific functionality. For example, the `draw()` method for `Soloons` needs to pass it's `color` field in the request payload. 
 
-The `PlanetFactory` is responsible for creating an array of planets of a specific type based on the `type` passed as a parameter. The `type` fields come from the response of the `/goal` endpoint. Once the array of planets is populated, each element's `draw()` method is called. This is done in a Polymorphic fashion since it's not known which specific subclass this planet belongs to.
+The `PlanetFactory` is responsible for creating an array of planets of a specific type based on the `type` passed as a parameter. The `type` fields come from the response of the `/goal` endpoint. Once the array of planets is populated, each element's `draw()` method is called. This is done in a Polymorphic fashion since the specific `Planet` subclass is unknown.
+
+Part One uses regular JavaScript to construct the grid in a more manual approach. 
 
 
 ## How to run

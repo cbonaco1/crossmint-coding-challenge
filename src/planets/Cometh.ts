@@ -18,7 +18,7 @@ class Cometh extends Planet {
   }
 
   /**
-   * Cometh' draw() method needs to also pass direction param
+   * Cometh's draw() method needs to also pass direction param
    * 
    * @param row 
    * @param column 

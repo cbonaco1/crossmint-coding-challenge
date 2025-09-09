@@ -76,6 +76,9 @@ export default abstract class Planet {
    * @returns {boolean}
    */
   validatePlacement(grid:Array<Array<string>>, rowIndex: number, colIndex:number): boolean {
+    // Another approach is to validate this in the constructor (like for color and direction),
+    // however then the constructor needs a reference to the grid and row/colIndex
+    // which seems not necessary.
     return true;
   }
 }
