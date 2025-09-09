@@ -9,8 +9,12 @@ class Cometh extends Planet {
 
   constructor(direction: Directions) {
     super();
-    this.apiRoute = "/comeths";
-    this.direction = direction;
+    if (!this.validateDirection(direction)) {
+      throw new Error(`Invalid direction ${direction} for Cometh`);
+    } else {
+      this.apiRoute = "/comeths";
+      this.direction = direction;
+    }
   }
 
   /**
@@ -35,6 +39,16 @@ class Cometh extends Planet {
         reject(error);
       })
     })
+  }
+
+  /**
+   * Valid direction for Cometh
+   * @param direction 
+   * @returns boolean
+   */
+  private validateDirection(direction: string): boolean {
+    const d = direction.toLowerCase();
+    return d === 'up' || d === 'down' || d === 'left' || d === 'right';
   }
 }
 

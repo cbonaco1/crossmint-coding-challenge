@@ -12,14 +12,18 @@ async function main() {
       data.goal.forEach((rows:Array<string>, rowIndex: number) => {
         // check if row is an array
         rows.forEach((planetType:string, colIndex: number) => {
-          const planet = PlanetFactory.createPlanet(planetType);
-          if (planet && planet.validatePlacement(data.goal, rowIndex, colIndex)) {
-            planets.push({
-              planet,
-              row: rowIndex,
-              column: colIndex,
-              type: planetType
-            });
+          try {
+            const planet = PlanetFactory.createPlanet(planetType);
+            if (planet && planet.validatePlacement(data.goal, rowIndex, colIndex)) {
+              planets.push({
+                planet,
+                row: rowIndex,
+                column: colIndex,
+                type: planetType
+              });
+            }
+          } catch (error) {
+            console.log("Error creating planet: ", error);
           }
         })
       });

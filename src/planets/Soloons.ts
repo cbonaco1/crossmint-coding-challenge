@@ -9,8 +9,12 @@ class Soloons extends Planet {
 
   constructor(color: Colors) {
     super();
-    this.apiRoute = "/soloons";
-    this.color = color;
+    if (!this.validateColor(color)) {
+      throw new Error(`Invalid Color ${color} for Soloon `);
+    } else {
+      this.apiRoute = "/soloons";
+      this.color = color;
+    }
   }
 
   /**
@@ -61,6 +65,16 @@ class Soloons extends Planet {
       valid = true;
     }
     return valid;
+  }
+
+  /**
+   * Validates color for Soloon
+   * @param color 
+   * @returns boolean
+   */
+  private validateColor(color: string):boolean {
+    const c = color.toLowerCase();
+    return c === "blue" || c === "red" || c === "purple" ||c ===  "white";
   }
 }
 
