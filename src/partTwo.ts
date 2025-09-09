@@ -40,19 +40,17 @@ async function main() {
         // handle error
       }
     */
-    let i = 1;
+    let i = 0;
     const intervalId = setInterval(async () => {
       if (i === planets.length) {
         clearInterval(intervalId)
       } else {
-        i++;
-        const plnt = planets[i-1]
+        const plnt = planets[i]
         if (plnt) {
           const { planet, row, column, type } = plnt;
           try {
-            console.log(`Drawing a ${type}`);
             await planet.draw(row, column);
-            console.log("done");
+            i++;
           } catch (error) {
             console.log("Error drawing ", type);
             if (axios.isAxiosError(error)) {
