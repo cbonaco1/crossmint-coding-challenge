@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from "axios";
 const API_DOMAIN = "https://challenge.crossmint.io/api";
 const CANDIDATE_ID= "74b00bbc-16c7-4fa5-83ba-b4e2c4d0e9a3";
 
