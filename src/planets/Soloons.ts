@@ -36,6 +36,32 @@ class Soloons extends Planet {
       })
     })
   }
+
+  /**
+   * Soloons can only be placed adjacent to Polyanets
+   * @returns {boolean}
+   */
+  validatePlacement(grid:Array<Array<string>>, rowIndex: number, colIndex:number):boolean {
+    const POLYANET = "POLYANET";
+    let valid = false;
+    const left = grid[rowIndex]?.[colIndex - 1];
+    const right = grid[rowIndex]?.[colIndex + 1];
+    const above = grid[rowIndex - 1]?.[colIndex];
+    const below = grid[rowIndex + 1]?.[colIndex];
+    const topRight = grid[rowIndex - 1]?.[colIndex + 1];
+    const topLeft = grid[rowIndex - 1]?.[colIndex - 1];
+    const bottomRight = grid[rowIndex + 1]?.[colIndex + 1];
+    const bottomLeft = grid[rowIndex + 1]?.[colIndex - 1];
+
+    if(left === POLYANET || right === POLYANET) {
+      valid = true;
+    } else if(above === POLYANET || below === POLYANET) {
+      valid = true;
+    } else if(topRight === POLYANET || topLeft === POLYANET || bottomLeft === POLYANET || bottomRight === POLYANET) {
+      valid = true;
+    }
+    return valid;
+  }
 }
 
 export default Soloons;

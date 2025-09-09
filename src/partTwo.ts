@@ -11,14 +11,14 @@ async function main() {
     if (data.goal) {
       data.goal.forEach((rows:Array<string>, rowIndex: number) => {
         // check if row is an array
-        rows.forEach((column:string, colIndex: number) => {
-          const planet = PlanetFactory.createPlanet(column);
-          if (planet) {
+        rows.forEach((planetType:string, colIndex: number) => {
+          const planet = PlanetFactory.createPlanet(planetType);
+          if (planet && planet.validatePlacement(data.goal, rowIndex, colIndex)) {
             planets.push({
               planet,
               row: rowIndex,
               column: colIndex,
-              type: column
+              type: planetType
             });
           }
         })

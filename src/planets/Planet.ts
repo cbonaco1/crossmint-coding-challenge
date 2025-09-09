@@ -51,4 +51,12 @@ export default abstract class Planet {
     // make DELETE call to this.baseUrl
     // i think delete is same for all
   }
+
+  /**
+   * Any planets with validation logic can override this
+   * @returns {boolean}
+   */
+  validatePlacement(grid:Array<Array<string>>, rowIndex: number, colIndex:number): boolean {
+    return true;
+  }
 }
