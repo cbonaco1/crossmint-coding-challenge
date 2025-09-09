@@ -8,9 +8,9 @@ async function main() {
   const planets:Array<{planet: Planet, row: number, column: number, type: string}> = [];
   try {
     const { data } = await getGoal();
+    // NICE_TO_HAVE - check if data.goal is a 2-D array of strings
     if (data.goal) {
       data.goal.forEach((rows:Array<string>, rowIndex: number) => {
-        // check if row is an array
         rows.forEach((planetType:string, colIndex: number) => {
           try {
             const planet = PlanetFactory.createPlanet(planetType);
